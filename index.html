@@ -5,138 +5,516 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Master of None — 2026 Masters Fantasy Pool</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Nunito:wght@400;700;800;900&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --masters-green: #1a4a2e;
-    --masters-gold: #c9a84c;
-    --masters-dark: #0e2d1b;
-    --bg: #f9f7f4;
-    --surface: #ffffff;
-    --surface2: #f2efe9;
-    --text: #1a1a1a;
-    --text2: #6b6b6b;
-    --border: rgba(0,0,0,0.1);
-    --radius-md: 8px;
-    --radius-lg: 12px;
+    --green: #1a6b3a;
+    --dark-green: #0d3d1f;
+    --gold: #f5c842;
+    --gold-dark: #c9960a;
+    --cream: #fffbee;
+    --red: #e03030;
+    --black: #1a1a1a;
+    --white: #ffffff;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh; padding-bottom: 4rem; }
 
-  .hero { background: var(--masters-green); padding: 3rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.015) 20px, rgba(255,255,255,0.015) 21px); }
-  .flag-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; position: relative; }
-  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--masters-gold); text-transform: uppercase; margin-bottom: 0.75rem; position: relative; }
-  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 0.4rem; position: relative; }
-  .hero-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 2.5vw, 1.3rem); color: var(--masters-gold); margin-bottom: 2rem; position: relative; }
-  .hero-divider { width: 60px; height: 1px; background: var(--masters-gold); margin: 0 auto 1.5rem; opacity: 0.6; position: relative; }
-  .hero-dates { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 1.5px; position: relative; }
+  body {
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(26,107,58,0.07) 0%, transparent 50%),
+      radial-gradient(circle at 85% 85%, rgba(245,200,66,0.09) 0%, transparent 50%);
+    font-family: 'Nunito', sans-serif;
+    color: var(--black);
+    min-height: 100vh;
+    padding-bottom: 4rem;
+  }
 
-  .content { max-width: 680px; margin: 0 auto; padding: 0 1.5rem; }
-  .section { margin-top: 2.5rem; }
-  .section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--text2); text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--border); }
+  /* HERO */
+  .hero {
+    background: var(--dark-green);
+    border-bottom: 5px solid var(--gold);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent 0px, transparent 8px,
+      rgba(255,255,255,0.025) 8px, rgba(255,255,255,0.025) 9px
+    );
+  }
+  .hero-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    position: relative;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
-  .pot-card { background: var(--masters-green); border-radius: var(--radius-lg); padding: 2rem; text-align: center; position: relative; overflow: hidden; }
-  .pot-card::after { content: ''; position: absolute; top: -40px; right: -40px; width: 150px; height: 150px; border-radius: 50%; background: rgba(201,168,76,0.07); }
-  .pot-amount { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; color: var(--masters-gold); line-height: 1; margin-bottom: 0.25rem; }
-  .pot-label { font-size: 13px; color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; letter-spacing: 1px; margin-bottom: 1.5rem; }
-  .pot-note { font-size: 11px; font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.35); letter-spacing: 0.5px; }
+  .hero-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: var(--gold);
+    letter-spacing: 4px;
+    line-height: 1;
+    position: relative;
+    margin-bottom: 0.25rem;
+  }
+  .hero-subtitle {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark-green);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 2px solid var(--gold-dark);
+    position: relative;
+  }
 
-  .pot-update-bar { background: var(--surface2); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
-  .update-label { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text2); }
-  .entry-count { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text); }
+  /* CONTENT */
+  .content { max-width: 680px; margin: 0 auto; padding: 0 1.25rem; }
+  .section { margin-top: 2rem; }
 
+  .section-label {
+    font-family: 'Bangers', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--dark-green);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--dark-green) 0px, var(--dark-green) 6px, transparent 6px, transparent 10px);
+    border-radius: 2px;
+  }
+
+  /* TIGER MUGSHOT */
+  .mugshot-card {
+    background: #f0ece0;
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .mugshot-card::before {
+    content: 'NOT AT AUGUSTA';
+    position: absolute;
+    top: 12px;
+    right: -28px;
+    background: var(--red);
+    color: white;
+    font-family: 'Bangers', cursive;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 36px;
+    transform: rotate(35deg);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+  }
+  .mugshot-photo {
+    flex-shrink: 0;
+    width: 110px;
+    height: 130px;
+    background: #c8c0a8;
+    border: 3px solid #888;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Hand-drawn style face using CSS */
+  .mugshot-face {
+    width: 60px;
+    height: 70px;
+    background: #d4a574;
+    border-radius: 50% 50% 48% 48%;
+    position: relative;
+    margin-bottom: 4px;
+    border: 2px solid #8a6040;
+  }
+  .mugshot-face::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 18px;
+    border-radius: 50%;
+    background: #b8915a;
+  }
+  .mugshot-eyes {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mugshot-eye {
+    width: 8px;
+    height: 8px;
+    background: #1a1a1a;
+    border-radius: 50%;
+  }
+  .mugshot-mouth {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 8px;
+    border: 2px solid #5a3010;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+  }
+  .mugshot-hat {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 20px;
+    background: var(--dark-green);
+    border-radius: 4px 4px 0 0;
+    border: 2px solid #000;
+  }
+  .mugshot-hat::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: -8px;
+    width: 64px;
+    height: 8px;
+    background: var(--dark-green);
+    border-radius: 2px;
+    border: 2px solid #000;
+  }
+  .mugshot-nameplate {
+    background: white;
+    border: 2px solid #888;
+    border-radius: 3px;
+    padding: 3px 6px;
+    text-align: center;
+    margin-top: 4px;
+    width: 100%;
+  }
+  .mugshot-nameplate-text {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+  .mugshot-info { flex: 1; }
+  .mugshot-header {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+  }
+  .mugshot-detail {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: #444;
+    line-height: 1.8;
+    border-left: 3px solid var(--red);
+    padding-left: 10px;
+    margin-bottom: 0.75rem;
+  }
+  .mugshot-detail strong { color: var(--black); font-weight: 700; }
+  .mugshot-verdict {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-family: 'Bangers', cursive;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 2px solid var(--black);
+  }
+
+  /* POT CARD */
+  .pot-card {
+    background: var(--green);
+    border: 3px solid var(--black);
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pot-card::before {
+    content: '🏆';
+    position: absolute;
+    font-size: 7rem;
+    opacity: 0.06;
+    right: -15px;
+    top: -15px;
+    transform: rotate(12deg);
+  }
+  .pot-sticker {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-family: 'Bangers', cursive;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 3px 12px;
+    border-radius: 4px;
+    border: 2px solid var(--black);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  .pot-amount {
+    font-family: 'Bangers', cursive;
+    font-size: 5.5rem;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 0.25rem;
+  }
+  .pot-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .entries-bar {
+    margin-top: 0.75rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border: 2px solid rgba(0,0,0,0.15);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  .entries-bar span { color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .entries-bar strong { color: var(--gold); font-size: 14px; font-weight: 900; }
+
+  /* PAYOUTS */
   .payout-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .payout-card { background: var(--surface2); border-radius: var(--radius-md); border: 0.5px solid var(--border); padding: 1.25rem 0.75rem; text-align: center; }
-  .payout-place { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--text2); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .payout-amount { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 0.2rem; }
-  .payout-pct { font-size: 11px; color: var(--text2); font-family: 'DM Mono', monospace; }
+  .payout-card {
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+  .payout-card.first { background: #fff8dc; }
+  .payout-card.second { background: #f0f0f0; }
+  .payout-card.third { background: #fcecd8; }
+  .payout-medal { font-size: 1.8rem; display: block; margin-bottom: 0.25rem; }
+  .payout-place { font-family: 'Bangers', cursive; font-size: 13px; letter-spacing: 2px; color: #777; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .payout-amount { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 1px; display: block; }
   .payout-card.first .payout-amount { color: #b8860b; }
-  .payout-card.second .payout-amount { color: var(--text2); }
+  .payout-card.second .payout-amount { color: #666; }
   .payout-card.third .payout-amount { color: #7a5c2e; }
+  .payout-pct { font-size: 11px; font-weight: 900; color: #aaa; margin-top: 2px; }
 
-  .leaderboard-link { display: flex; align-items: center; justify-content: space-between; background: var(--surface2); border-radius: var(--radius-md); border: 0.5px solid var(--border); padding: 1rem 1.25rem; text-decoration: none; color: var(--text); cursor: pointer; transition: background 0.15s; }
-  .leaderboard-link:hover { background: var(--surface); }
-  .link-label { font-size: 14px; font-weight: 500; }
-  .link-sub { font-size: 12px; color: var(--text2); margin-top: 2px; font-family: 'DM Mono', monospace; }
-  .link-arrow { font-size: 18px; color: var(--masters-gold); }
+  /* LEADERBOARD */
+  .leaderboard-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border: 3px solid var(--black);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: var(--black);
+    transition: transform 0.1s;
+  }
+  .leaderboard-link:hover { transform: translate(2px, 2px); }
+  .link-icon { font-size: 1.5rem; margin-right: 12px; }
+  .link-label { font-size: 14px; font-weight: 900; }
+  .link-sub { font-size: 11px; color: #888; margin-top: 2px; font-weight: 700; }
+  .link-arrow { font-size: 1.4rem; font-weight: 900; color: var(--green); }
 
-  .venmo-box { background: var(--surface2); border-radius: var(--radius-lg); border: 0.5px solid var(--border); padding: 1.5rem; }
+  /* VENMO */
+  .venmo-box {
+    background: var(--white);
+    border: 3px solid var(--black);
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
   .venmo-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; }
-  .venmo-logo { background: #3D95CE; color: white; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; padding: 4px 8px; border-radius: 4px; letter-spacing: 1px; }
-  .venmo-handle { font-family: 'DM Mono', monospace; font-size: 16px; color: var(--text); font-weight: 500; }
-  .venmo-content { display: flex; gap: 1.25rem; align-items: flex-start; }
-  .qr-wrap { background: #fff; border-radius: var(--radius-md); border: 0.5px solid var(--border); width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
-  .qr-wrap img { width: 140px; height: 140px; object-fit: cover; display: block; }
+  .venmo-logo {
+    background: #3D95CE;
+    color: white;
+    font-family: 'Bangers', cursive;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 2px solid var(--black);
+  }
+  .venmo-handle { font-family: 'Permanent Marker', cursive; font-size: 15px; }
+  .venmo-content { display: flex; gap: 1rem; align-items: flex-start; }
+  .qr-wrap {
+    background: #fff;
+    border-radius: 10px;
+    border: 3px solid var(--black);
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .qr-wrap img { width: 130px; height: 130px; object-fit: cover; display: block; }
   .venmo-instructions { flex: 1; }
-  .instruction-step { display: flex; gap: 10px; margin-bottom: 0.75rem; align-items: flex-start; }
-  .step-num { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--masters-green); color: var(--masters-gold); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-  .step-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
-  .step-text strong { color: var(--text); font-weight: 500; }
+  .instruction-step { display: flex; gap: 8px; margin-bottom: 0.65rem; align-items: flex-start; }
+  .step-num {
+    font-family: 'Bangers', cursive;
+    font-size: 13px;
+    background: var(--green);
+    color: var(--gold);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text { font-size: 12px; color: #444; line-height: 1.5; font-weight: 700; }
+  .step-text strong { color: var(--black); }
+  .warning-pill {
+    margin-top: 0.75rem;
+    background: #fff3cd;
+    border: 2px solid var(--gold-dark);
+    border-radius: 8px;
+    padding: 6px 10px;
+  }
+  .warning-pill span { font-size: 11px; font-weight: 800; color: #7a5c0a; line-height: 1.4; }
 
-  .update-hint { margin-top: 1.5rem; font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text2); text-align: center; padding: 0.75rem; background: var(--surface2); border-radius: var(--radius-md); border: 0.5px dashed var(--border); }
+  /* FOOTER */
+  .update-hint {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 13px;
+    color: var(--dark-green);
+    background: var(--white);
+    border: 3px dashed var(--green);
+    border-radius: 12px;
+    padding: 0.85rem;
+  }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <span class="flag-icon">⛳</span>
-  <div class="hero-eyebrow">Augusta National · April 10–13, 2026</div>
+  <span class="hero-emoji">⛳</span>
   <div class="hero-title">Master of None</div>
-  <div class="hero-subtitle">2026 Edition</div>
-  <div class="hero-divider"></div>
-  <div class="hero-dates">The Masters Fantasy Pool</div>
+  <div class="hero-subtitle">2026 Edition — Augusta National</div><br>
+  <span class="hero-badge">Masters Fantasy Pool · April 10–13</span>
 </div>
 
 <div class="content">
 
+  <!-- POT -->
   <div class="section">
-    <div class="section-label">Current pot</div>
+    <div class="section-label">💰 Current Pot</div>
     <div class="pot-card">
-      <div class="pot-amount" id="pot-display">$350</div>
-      <div class="pot-label">total prize pool</div>
-      <div class="pot-note">Last updated: <span id="last-updated">Apr 5, 2026</span></div>
-    </div>
-    <div class="pot-update-bar">
-      <span class="update-label">$25 entry · 14 entries</span>
-      <span class="entry-count" id="entry-count">14 entries locked</span>
+      <div class="pot-sticker">🔥 Live Total</div>
+      <div class="pot-amount" id="pot-display">$375</div>
+      <div class="pot-sub">total prize pool · <span id="last-updated">Apr 5, 2026</span></div>
+      <div class="entries-bar">
+        <span>Entries:</span>
+        <strong>15 locked in</strong>
+        <span>·</span>
+        <strong>$25 each</strong>
+      </div>
     </div>
   </div>
 
+  <!-- PAYOUTS -->
   <div class="section">
-    <div class="section-label">Payouts</div>
+    <div class="section-label">🏆 Payouts</div>
     <div class="payout-grid">
       <div class="payout-card first">
-        <div class="payout-place">1st place</div>
-        <span class="payout-amount" id="first-payout">$245</span>
+        <span class="payout-medal">🥇</span>
+        <div class="payout-place">1st Place</div>
+        <span class="payout-amount" id="first-payout">$263</span>
         <div class="payout-pct">70%</div>
       </div>
       <div class="payout-card second">
-        <div class="payout-place">2nd place</div>
-        <span class="payout-amount" id="second-payout">$70</span>
+        <span class="payout-medal">🥈</span>
+        <div class="payout-place">2nd Place</div>
+        <span class="payout-amount" id="second-payout">$75</span>
         <div class="payout-pct">20%</div>
       </div>
       <div class="payout-card third">
-        <div class="payout-place">3rd place</div>
-        <span class="payout-amount" id="third-payout">$35</span>
+        <span class="payout-medal">🥉</span>
+        <div class="payout-place">3rd Place</div>
+        <span class="payout-amount" id="third-payout">$38</span>
         <div class="payout-pct">10%</div>
       </div>
     </div>
   </div>
 
+  <!-- LEADERBOARD -->
   <div class="section">
-    <div class="section-label">Pool leaderboard & picks</div>
+    <div class="section-label">📊 Live Standings</div>
     <a href="https://www.masters.com/en_US/fantasy?leagueJoinToken=77cb23a5e6&leagueId=3394" target="_blank" class="leaderboard-link">
-      <div>
-        <div class="link-label">Masters Fantasy Pool — Master of None</div>
-        <div class="link-sub">masters.com · live standings</div>
+      <div style="display:flex;align-items:center;">
+        <span class="link-icon">🏌️</span>
+        <div>
+          <div class="link-label">Masters Fantasy — Master of None</div>
+          <div class="link-sub">masters.com · tap for live standings & picks</div>
+        </div>
       </div>
       <span class="link-arrow">→</span>
     </a>
   </div>
 
+  <!-- VENMO -->
   <div class="section">
-    <div class="section-label">Send your entry fee</div>
+    <div class="section-label">💸 Pay Up</div>
     <div class="venmo-box">
       <div class="venmo-header">
         <span class="venmo-logo">VENMO</span>
@@ -149,19 +527,22 @@
         <div class="venmo-instructions">
           <div class="instruction-step">
             <div class="step-num">1</div>
-            <div class="step-text">Open Venmo and scan the QR code, or search <strong>@cooperbricks</strong></div>
+            <div class="step-text">Scan the QR or search <strong>@cooperbricks</strong></div>
           </div>
           <div class="instruction-step">
             <div class="step-num">2</div>
-            <div class="step-text">Enter your entry fee amount</div>
+            <div class="step-text">Send your entry fee</div>
           </div>
           <div class="instruction-step">
             <div class="step-num">3</div>
-            <div class="step-text">In the note, include your <strong>roster name</strong> — payment will be returned if it can't be matched to an entry</div>
+            <div class="step-text">Put your <strong>roster name</strong> in the note</div>
           </div>
           <div class="instruction-step">
             <div class="step-num">4</div>
-            <div class="step-text">Hit pay — you're in. Confirm with Cooper if no reply in 24hrs.</div>
+            <div class="step-text">You're in! DM Cooper if no reply in 24hrs</div>
+          </div>
+          <div class="warning-pill">
+            <span>⚠️ No roster name = refund. Don't be that guy.</span>
           </div>
         </div>
       </div>
@@ -169,13 +550,13 @@
   </div>
 
   <div class="update-hint">
-    ✦ pot & standings update daily through Sunday · paid out by Tuesday
+    ✦ pot updates daily thru Sunday · winner paid by Monday ✦
   </div>
 
 </div>
 
 <script>
-  const POT = 350;
+  const POT = 375;
   document.getElementById('pot-display').textContent = '$' + POT.toLocaleString();
   document.getElementById('first-payout').textContent = '$' + Math.round(POT * 0.70).toLocaleString();
   document.getElementById('second-payout').textContent = '$' + Math.round(POT * 0.20).toLocaleString();
