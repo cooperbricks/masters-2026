@@ -465,7 +465,7 @@
       <div class="pot-sub">total prize pool · <span id="last-updated">Apr 5, 2026</span></div>
       <div class="entries-bar">
         <span>Entries:</span>
-        <strong>24 entries</strong>
+        <strong>28 entries</strong>
         <span>·</span>
         <strong>$25 each</strong>
       </div>
@@ -549,6 +549,49 @@
     </div>
   </div>
 
+
+  <!-- UNPAID -->
+  <div class="section">
+    <div class="section-label">👀 Unpaid Entries</div>
+    <div class="unpaid-box">
+      <div class="unpaid-intro">You know who you are. Venmo @cooperbricks before tee shots Thursday.</div>
+      <div class="unpaid-list">
+        <div class="unpaid-item">🚨 Greenbean Machine</div>
+        <div class="unpaid-item">🚨 Range Expert</div>
+        <div class="unpaid-item">🚨 Ajjdrives</div>
+        <div class="unpaid-item">🚨 Check My Shaft</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .unpaid-box {
+      background: #fff8f8;
+      border: 3px solid var(--red);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+    }
+    .unpaid-intro {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .unpaid-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .unpaid-item {
+      background: white;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--black);
+    }
+  </style>
 
   <!-- CAROUSEL -->
   <div class="section">
@@ -634,7 +677,7 @@
 </div>
 
 <script>
-  const POT = 600;
+  const POT = 700;
   document.getElementById('pot-display').textContent = '$' + POT.toLocaleString();
   document.getElementById('first-payout').textContent = '$' + Math.round(POT * 0.70).toLocaleString();
   document.getElementById('second-payout').textContent = '$' + Math.round(POT * 0.20).toLocaleString();
