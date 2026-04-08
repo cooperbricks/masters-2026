@@ -465,7 +465,7 @@
       <div class="pot-sub">total prize pool · <span id="last-updated">Apr 5, 2026</span></div>
       <div class="entries-bar">
         <span>Entries:</span>
-        <strong>38 entries</strong>
+        <strong>40 entries</strong>
         <span>·</span>
         <strong>$25 each</strong>
       </div>
@@ -559,6 +559,7 @@
         <div class="unpaid-item">🚨 Greenbean Machine</div>
         <div class="unpaid-item">🚨 Range Expert</div>
         <div class="unpaid-item">🚨 Ajjdrives</div>
+        <div class="unpaid-item">🚨 Tigers Ambien Tour</div>
       </div>
     </div>
   </div>
@@ -586,18 +587,7 @@
   </div>
 
   <style>
-    .whatsapp-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #e7f9ee;
-      border: 3px solid #25D366;
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      text-decoration: none;
-      color: var(--black);
-      transition: transform 0.1s;
-    }
+    .whatsapp-link { display: flex; align-items: center; justify-content: space-between; background: #e7f9ee; border: 3px solid #25D366; border-radius: 12px; padding: 1rem 1.25rem; text-decoration: none; color: var(--black); transition: transform 0.1s; }
     .whatsapp-link:hover { transform: translate(2px, 2px); }
   </style>
 
@@ -685,7 +675,7 @@
 </div>
 
 <script>
-  const POT = 950;
+  const POT = 1000;
   document.getElementById('pot-display').textContent = '$' + POT.toLocaleString();
   document.getElementById('first-payout').textContent = '$' + Math.round(POT * 0.70).toLocaleString();
   document.getElementById('second-payout').textContent = '$' + Math.round(POT * 0.20).toLocaleString();
