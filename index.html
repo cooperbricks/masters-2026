@@ -473,6 +473,55 @@
   </div>
 
   <!-- PAYOUTS -->
+
+  <!-- POOL LEADERBOARD -->
+  <div class="section">
+    <div class="section-label">🏌️ Pool Leaderboard — Day 1</div>
+    <div class="lb-card">
+      <div class="lb-note">Based on Round 1 scores · Tiebreakers TBD</div>
+      <div class="lb-row lb-first">
+        <span class="lb-pos">1</span>
+        <span class="lb-name">Fresero</span>
+        <span class="lb-score">-7</span>
+      </div>
+      <div class="lb-divider">── Tied at -5 ──</div>
+      <div class="lb-row lb-tied">
+        <span class="lb-pos">T2</span>
+        <span class="lb-name">Spraguel</span>
+        <span class="lb-score">-5</span>
+      </div>
+      <div class="lb-row lb-tied">
+        <span class="lb-pos">T2</span>
+        <span class="lb-name">Tiger ONoxy</span>
+        <span class="lb-score">-5</span>
+      </div>
+      <div class="lb-row lb-tied">
+        <span class="lb-pos">T2</span>
+        <span class="lb-name">Pimento Mamich</span>
+        <span class="lb-score">-5</span>
+      </div>
+      <div class="lb-row lb-tied">
+        <span class="lb-pos">T2</span>
+        <span class="lb-name">Augusta Hustlers</span>
+        <span class="lb-score">-5</span>
+      </div>
+    </div>
+  </div>
+  <style>
+    .lb-card { background: var(--white); border: 3px solid var(--black); border-radius: 16px; overflow: hidden; }
+    .lb-note { font-size: 11px; font-weight: 700; color: #888; text-align: center; padding: 0.6rem 1rem; background: #f9f6ee; border-bottom: 2px solid #eee; letter-spacing: 0.5px; }
+    .lb-row { display: flex; align-items: center; padding: 0.75rem 1.25rem; border-bottom: 1px solid #f0f0f0; gap: 12px; }
+    .lb-row:last-child { border-bottom: none; }
+    .lb-first { background: #fffbea; }
+    .lb-tied { background: white; }
+    .lb-pos { font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 1px; color: #888; width: 32px; flex-shrink: 0; }
+    .lb-first .lb-pos { color: var(--gold-dark); }
+    .lb-name { font-size: 14px; font-weight: 900; color: var(--black); flex: 1; }
+    .lb-score { font-family: 'Nunito', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--green); }
+    .lb-first .lb-score { font-size: 1.4rem; color: var(--dark-green); }
+    .lb-divider { text-align: center; font-size: 11px; font-weight: 800; color: #aaa; padding: 0.4rem; background: #f9f9f9; border-top: 1px solid #eee; border-bottom: 1px solid #eee; letter-spacing: 1px; }
+  </style>
+
   <div class="section">
     <div class="section-label">🏆 Payouts</div>
     <div class="payout-grid">
